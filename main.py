@@ -8,18 +8,21 @@ from waitress import serve
 app = Flask(__name__)
 cors = CORS(app)
 
+
 @app.route("/",methods=['GET'])
 def test():
     json = {}
-    json["message"] = "Server running...."
+    json["message"]="Server running ..."
     return jsonify(json)
+
 
 def loadFileConfig():
     with open('config.json') as f:
         data = json.load(f)
     return data
 
-if __name__ == '__main__':
+
+if __name__== '__main__':
     dataConfig = loadFileConfig()
-    print("Server Running: " + "https://" + dataConfig["url-backend"] + ":" + str(dataConfig["port"]))
+    print("Server Running: " + "http://" + dataConfig["url-backend"] + ":" + str(dataConfig["port"]))
     serve(app, host=dataConfig["url-backend"], port=dataConfig["port"])
