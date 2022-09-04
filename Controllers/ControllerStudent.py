@@ -15,10 +15,10 @@ class ControllerStudent():
         }
         return [anStudent]
     # Function to create Student Object
-    def create(self,infoStudent):
-        print("Create Student")
-        theStudent = Student(infoStudent)
-        return theStudent.__dict__
+    def create(self, infoEstudiante):
+        print("Crear un estudiante")
+        theEstudiante = Student(infoEstudiante)
+        return theEstudiante.__dict__
 
     # Display Student by Id
     def show(self,id):
