@@ -3,10 +3,9 @@ from Repositories.RepositoryStudent import RepositoryStudent
 
 
 class ControllerStudent():
-
-    def __int__(self):
-        print("Created ControllerStudent")
-        self.RepositoryStudent = RepositoryStudent()
+    def __init__(self):
+        #print("Created ControllerStudent")
+        self.repositoryStudent = RepositoryStudent()
 
     # Function that calls all student list with their propierties
     def index(self):
@@ -19,7 +18,7 @@ class ControllerStudent():
             "lastname":"Stark"
         }
         return [anStudent]"""
-        return self.RepositoryStudent.findAll()
+        return self.repositoryStudent.findAll()
 
     # Function to create Student Object
     def create(self, infoStudent):
@@ -27,7 +26,7 @@ class ControllerStudent():
         theEstudiante = Student(infoEstudiante)
         return theEstudiante.__dict__"""
         newStudent = Student(infoStudent)
-        return self.RepositoryStudent.save(newStudent)
+        return self.repositoryStudent.save(newStudent)
 
     # Display Student by Id
     def show(self, id):
@@ -39,7 +38,7 @@ class ControllerStudent():
             "lastname": "Stark"
         }
         return theStudent"""
-        theStudent = Student(self.RepositoryStudent.finById(id))
+        theStudent = Student(self.repositoryStudent.finById(id))
         return theStudent.__dict__
 
     # Function to update an Student
@@ -47,14 +46,15 @@ class ControllerStudent():
         """print("Update Student with id: ", id)
         theStudent = Student(infoStudent)
         return theStudent.__dict__"""
-        currentStudent = Student(self.RepositoryStudent.finById(id))
+        currentStudent = Student(self.repositoryStudent.finById(id))
         currentStudent.dni = infoStudent["dni"]
         currentStudent.name = infoStudent["name"]
         currentStudent.lastname = infoStudent["lastname"]
-        return self.RepositoryStudent.save(currentStudent)
+        return self.repositoryStudent.save(currentStudent)
 
     #Function to delete an Student
     def delete(self, id):
         """print("Deleting Student with id", id)
         return{"deleted count": 1}"""
-        return self.RepositoryStudent.delete(id)
+        return self.repositoryStudent.delete(id)
+

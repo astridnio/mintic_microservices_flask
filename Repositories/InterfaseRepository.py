@@ -9,14 +9,13 @@ T = TypeVar('T')
 
 
 class InterfaseRepository(Generic[T]):
-
-    def __int__(self):
+    def __init__(self):
         ca = certifi.where()
         dataConfig = self.loadFileConfig()
-        client = pymongo.MongoClient(dataConfig["data-db-connection"], tlsCAFile=ca)
-        self.dataBase=client[dataConfig["name-db"]]
-        theClass = get_args(self.__org_bases__[0])
-        self.collection=theClass[0].__name__.lower()
+        client = pymongo.MongoClient(dataConfig["data-db-connection"],tlsCAFile=ca)
+        self.dataBase = client[dataConfig["name-db"]]
+        theClass = get_args(self.__orig_bases__[0])
+        self.collection = theClass[0].__name__.lower()
 
     def loadFileConfig(self):
         with open('config.json') as f:
@@ -67,7 +66,7 @@ class InterfaseRepository(Generic[T]):
         count = theCollection.delete_one({"_id": ObjectId(id)}).deleted_count
         return {"deleted_count": count}
 
-    def finById(self, id):
+    def findById(self, id):
         theCollection = self.dataBase[self.collection]
         i = theCollection.find_one({"_id": ObjectId(id)})
         i = self.getValuesDBRef(i)
