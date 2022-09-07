@@ -1,4 +1,6 @@
 {
   "url-backend": "127.0.0.1",
-  "port": 9999
+  "port": 9999,
+  "data-db-connection": "mongodb+srv://misiontic-pruebas:7tmBnlloebDLPZmK@clustermisiontic.iic4zwg.mongodb.net/db-academy-register?retryWrites=true&w=majority",
+  "name-db": "db-academy-register"
 }
