@@ -38,7 +38,7 @@ class ControllerStudent():
             "lastname": "Stark"
         }
         return theStudent"""
-        theStudent = Student(self.repositoryStudent.finById(id))
+        theStudent = Student(self.repositoryStudent.findById(id))
         return theStudent.__dict__
 
     # Function to update an Student
@@ -46,7 +46,7 @@ class ControllerStudent():
         """print("Update Student with id: ", id)
         theStudent = Student(infoStudent)
         return theStudent.__dict__"""
-        currentStudent = Student(self.repositoryStudent.finById(id))
+        currentStudent = Student(self.repositoryStudent.findById(id))
         currentStudent.dni = infoStudent["dni"]
         currentStudent.name = infoStudent["name"]
         currentStudent.lastname = infoStudent["lastname"]
