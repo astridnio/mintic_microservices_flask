@@ -33,7 +33,7 @@ class InterfaseRepository(Generic[T]):
             delattr(item, "_id")
             item = item.__dict__
             updateItem = {"$set": item}
-            x = theCollection.update_one({"_id": _id }, updateItem)
+            x = theCollection.update_one({"_id": _id}, updateItem)
         else:
             _id = theCollection.insert_one(item.__dict__)
             theId = _id.inserted_id.__str__()
@@ -146,7 +146,7 @@ class InterfaseRepository(Generic[T]):
         keys = list(theDict.keys())
         for k in keys:
             if theDict[k].__str__().count("object") == 1:
-                newObject = self.ObjectToDVRef(getattr(item, k))
+                newObject = self.ObjectToDBRef(getattr(item, k))
                 setattr(item, k, newObject)
         return item
 
